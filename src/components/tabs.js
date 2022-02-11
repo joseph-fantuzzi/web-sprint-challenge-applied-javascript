@@ -16,9 +16,12 @@ const Tabs = (topics) => {
   // </div>
   //
 
+  //Creating the outermost element div and adding its necessary class name.
   const topics_div = document.createElement("div");
   topics_div.classList.add("topics");
 
+  //Looping over the argument array, creating a new div element for each topic, adding a class to it,
+  //adding text, and appending it to the outermost element div.
   topics.forEach((topic) => {
     let tab_div = document.createElement("div");
     tab_div.classList.add("tab");
@@ -38,6 +41,10 @@ const tabsAppender = (selector) => {
   // Append the tabs to the element in the DOM that matches the selector passed to the function.
   //
 
+  //Using Axios to get the API data from the server and creating a then, catch, and finally method.
+  //The .then() method selects the specific element from the input selector in the HTML document
+  //Using the Tabs component function from above, returning a div tree structure and appending that to the
+  //specific element from the HTML document.
   axios
     .get("http://localhost:5000/api/topics")
     .then((resp) => {

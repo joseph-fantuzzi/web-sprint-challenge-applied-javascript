@@ -12,19 +12,23 @@ const Header = (title, date, temp) => {
   //  </div>
   //
 
+  //Creating the elements in the tree structure
   const header_div = document.createElement("div");
   const date_span = document.createElement("span");
   const title_h1 = document.createElement("h1");
   const temp_span = document.createElement("span");
 
+  //Placing the elements in the correct order
   header_div.appendChild(date_span);
   header_div.appendChild(title_h1);
   header_div.appendChild(temp_span);
 
+  //Adding the necessary classes to the elements
   header_div.classList.add("header");
   date_span.classList.add("date");
   temp_span.classList.add("temp");
 
+  //Added content to the necessary elements
   date_span.textContent = date;
   title_h1.textContent = title;
   temp_span.textContent = temp;
@@ -40,7 +44,12 @@ const headerAppender = (selector) => {
   // It should append the header to the element in the DOM that matches the given selector.
   //
 
+  //Access the heading div element from the HTML.
+  //Caching the DOM.
   const headerElement = document.querySelector(selector);
+
+  //Appending the invocation of the Header function, which returns an HTMl tree structure to the
+  //heading div element.
   headerElement.appendChild(Header("BloomTech Times", "February 20, 2022", "50°"));
 };
 

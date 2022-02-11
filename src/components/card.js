@@ -20,6 +20,7 @@ const Card = (article) => {
   // </div>
   //
 
+  //Created the necessary elements in the tree
   const cardDiv = document.createElement("div");
   const headlineDiv = document.createElement("div");
   const authorDiv = document.createElement("div");
@@ -27,21 +28,25 @@ const Card = (article) => {
   const authorPhotoImg = document.createElement("img");
   const authorNameSpan = document.createElement("span");
 
+  //Ordered the elements correctly according to the above tree structure
   cardDiv.appendChild(headlineDiv);
   cardDiv.appendChild(authorDiv);
   authorDiv.appendChild(imgContainerDiv);
   imgContainerDiv.appendChild(authorPhotoImg);
   authorDiv.appendChild(authorNameSpan);
 
+  //Adding the necessary classes to the elements
   cardDiv.classList.add("card");
   headlineDiv.classList.add("headline");
   authorDiv.classList.add("author");
   imgContainerDiv.classList.add("img-container");
 
+  //Adding the necessary content to the elements
   authorPhotoImg.src = article.authorPhoto;
   headlineDiv.textContent = article.headline;
   authorNameSpan.textContent = `By ${article.authorName}`;
 
+  //Adding an event listener, listening for a click, logging the article headline for each click of the card div.
   cardDiv.addEventListener("click", () => {
     console.log(article.headline);
   });
@@ -59,6 +64,12 @@ const cardAppender = (selector) => {
   // Append each card to the element in the DOM that matches the selector passed to the function.
   //
 
+  //Using Axios to retrieve the API data from the server.
+  //The .then() method is selecting the specific element from the input selector for the function.
+  //Then, accessing only the values of the full object, storing that into an array.
+  //The array is now an array with nested arrays that have 3 objects inside.
+  //Looping over that array and looping over each array within that outer array, appending the invocation
+  //of the Card function to the cardElement div.
   axios
     .get("http://localhost:5000/api/articles")
     .then((resp) => {
