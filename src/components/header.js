@@ -41,7 +41,7 @@ const headerAppender = (selector) => {
   //
 
   const headerElement = document.querySelector(selector);
-  headerElement.appendChild(Header("New Technologies in Blockchain", "February 20, 2022", "50°"));
+  headerElement.appendChild(Header("BloomTech Times", "February 20, 2022", "50°"));
 };
 
 export { Header, headerAppender };
